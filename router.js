@@ -1,10 +1,11 @@
 import { Router } from "express";
-import { getIndex, getForm, submitForm } from "./controller.js";
+import { getIndex, getMessage, getForm, submitForm } from "./controller.js";
 
 const router = Router();
 
 router.get("/", getIndex);
 router.get("/new", getForm);
+router.get("/message/:id", getMessage);
 
 router.post("/new", submitForm);
 
