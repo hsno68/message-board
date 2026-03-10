@@ -10,3 +10,14 @@ const messages = [
 export function getIndex(req, res) {
   res.render("layout", { title: "Mini Messageboard", page: "pages/index", messages });
 }
+
+export function getForm(req, res) {
+  res.render("layout", { title: "New Message Form", page: "pages/form" });
+}
+
+export function submitForm(req, res) {
+  const { user, message } = req.body;
+  const newMessage = { user, message, date: new Date() };
+  messages.push(newMessage);
+  res.redirect("/");
+}
