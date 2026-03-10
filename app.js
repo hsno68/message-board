@@ -1,7 +1,7 @@
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import indexRouter from "./routes/indexRoutes.js";
+import router from "./router.js";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,7 +13,7 @@ app.set("view engine", "ejs");
 
 app.use(express.static(path.join(__dirname, "public")));
 
-app.use(["/", "/home"], indexRouter);
+app.use("/", router);
 app.use((req, res) => {
   res.status(404).send("Page not found");
 });
